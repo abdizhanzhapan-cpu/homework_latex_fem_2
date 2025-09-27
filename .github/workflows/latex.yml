@@ -1,0 +1,25 @@
+name: Build LaTeX PDF
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up LaTeX
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+          latexmk_use_xelatex: true
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: homework-pdf
+          path: main.pdf
