@@ -1,0 +1,99 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{physics}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{bm}
+\setlength{\parskip}{0.6em}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\begin{center}
+{\Large HW2 Problem 1a  Derivation of the beam model with a point load and self weight}\\
+\end{center}
+
+\textbf{Kinematics and constitutive law.}
+Let $\phi(x)$ be the small transverse deflection of a slender uniform beam of length $L$ resting in the $x$ direction.
+Euler Bernoulli assumptions are used
+plane cross sections remain plane and normal to the neutral axis
+shear strains are negligible
+and rotations are small.
+The curvature of the neutral axis is
+\[
+\kappa(x) \approx \dv[2]{\phi}{x}.
+\]
+For an elastic beam with Young modulus $E$ and second moment of area $I$ the bending moment is related to curvature by
+\[
+M(x) = - E I \, \kappa(x) = - E I \, \phi''(x).
+\]
+The sign choice is such that positive downward deflection produces negative bending moment.
+
+\textbf{Force balance in the beam.}
+Let $q(x)$ be the distributed transverse load per unit length taken positive downward.
+Classical beam theory gives the static relations
+\[
+V(x) = \dv{M}{x}, 
+\qquad 
+q(x) = \dv{V}{x} = \dv[2]{M}{x}.
+\]
+Combining with the constitutive law yields the governing equation
+\[
+E I \, \phi^{(4)}(x) = q(x).
+\]
+
+\textbf{Loads in the present setting.}
+Two sources act on the beam
+\begin{itemize}
+\item a concentrated force of magnitude $P$ applied at $x = L/3$ directed downward
+\item uniform self weight of the beam with total mass $m$ and gravity $g$.  
+Since the mass is uniform the weight per unit length is $\omega = \dfrac{m g}{L}$.
+\end{itemize}
+In distribution form the total load is
+\[
+q(x) = P\,\delta\!\left(x-\frac{L}{3}\right) + \omega
+= P\,\delta\!\left(x-\frac{L}{3}\right) + \frac{m g}{L}.
+\]
+Therefore the field equation reads
+\[
+E I \, \phi^{(4)}(x) 
+= P\,\delta\!\left(x-\frac{L}{3}\right) + \frac{m g}{L}.
+\]
+
+\textbf{Boundary conditions for clamped ends.}
+Both ends are fixed horizontally and vertically.  
+For a clamped end the deflection and the rotation vanish, which gives
+\[
+\phi(0)=0, 
+\qquad 
+\phi'(0)=0,
+\qquad
+\phi(L)=0,
+\qquad
+\phi'(L)=0.
+\]
+
+\textbf{Consistency checks.}
+Integrating the field equation across a small interval that encloses $x=L/3$ gives the jump in the third derivative
+\[
+\phi^{(3)}\bigl((L/3)^{+}\bigr) - \phi^{(3)}\bigl((L/3)^{-}\bigr)
+= \frac{P}{E I},
+\]
+which is the expected shear force jump caused by a concentrated load.
+Away from the point $x=L/3$ the right side is constant, hence $M'' = q = m g L^{-1}$ and the moment is a cubic in $x$, again consistent with elementary beam theory.
+
+\textbf{Final boundary value problem.}
+With the choice $\phi$ for deflection the model used in the later parts of the assignment is
+\[
+\boxed{ \;
+E I \, \phi^{(4)}(x) 
+= P\,\delta\!\left(x-\frac{L}{3}\right) + \frac{m g}{L},
+\quad
+\phi(0)=\phi'(0)=0,
+\quad
+\phi(L)=\phi'(L)=0
+\;}
+\]
+which is equivalent to the statement in the prompt after the change of notation $\phi \leftrightarrow v$.
+\end{document}
